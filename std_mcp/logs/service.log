@@ -1,0 +1,870 @@
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.211.112.54:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.211.112.54:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     43.131.253.14:0 - "GET / HTTP/1.1" 200 OK
+INFO:     66.132.195.58:0 - "GET / HTTP/1.1" 200 OK
+INFO:     66.132.195.58:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     66.132.195.58:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     41.211.112.54:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     8.209.196.146:0 - "GET / HTTP/1.1" 200 OK
+INFO:     8.209.196.146:0 - "GET / HTTP/1.1" 200 OK
+INFO:     123.160.223.74:0 - "GET / HTTP/1.1" 200 OK
+INFO:     123.160.223.72:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     195.184.76.34:0 - "GET / HTTP/1.1" 200 OK
+INFO:     91.230.168.14:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     45.205.1.240:0 - "GET / HTTP/1.1" 200 OK
+INFO:     170.106.113.159:0 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     43.165.7.74:0 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     5.61.209.92:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     45.205.1.247:0 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     45.156.128.45:0 - "GET / HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     139.59.166.28:0 - "GET / HTTP/1.1" 200 OK
+INFO:     139.59.166.28:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     152.32.252.94:0 - "GET / HTTP/1.1" 200 OK
+INFO:     152.32.252.94:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     152.32.252.94:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     152.32.252.94:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     152.32.252.94:0 - "GET /config.json HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     141.98.11.11:0 - "GET / HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     104.155.11.101:0 - "GET / HTTP/1.1" 200 OK
+INFO:     45.205.1.244:0 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     62.216.94.44:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     62.216.94.44:0 - "GET /.git/ HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     147.185.132.156:0 - "GET / HTTP/1.1" 200 OK
+INFO:     62.210.142.64:0 - "GET / HTTP/1.1" 200 OK
+INFO:     62.210.142.64:0 - "GET /manage/account/login HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /admin/index.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /index.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /%2BCSCOE%2B/logon.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /cgi-bin/login.cgi HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /login.htm HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /login.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /login.jsp HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /doc/index.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /remote/login HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /admin/login.asp HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /web/ HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /webpages/login.html HTTP/1.1" 404 Not Found
+INFO:     62.210.142.64:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     93.123.72.183:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44912 - "POST /auth/admin-login HTTP/1.1" 200 OK
+INFO:     62.216.94.44:0 - "GET /.git/ HTTP/1.1" 404 Not Found
+INFO:     62.216.94.44:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     41.202.207.14:0 - "POST /auth/admin-login HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "GET /admin/sessions HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "GET /admin/sessions HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /admin/config/llm HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     41.202.207.14:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     45.198.224.5:0 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     43.166.244.66:0 - "GET / HTTP/1.1" 200 OK
+INFO:     44.212.74.78:0 - "GET / HTTP/1.1" 200 OK
+INFO:     94.154.43.254:0 - "GET / HTTP/1.1" 200 OK
+INFO:     69.5.169.96:0 - "GET / HTTP/1.1" 200 OK
+INFO:     69.5.169.30:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     69.5.169.120:0 - "POST /mcp HTTP/1.1" 404 Not Found
+INFO:     18.218.118.203:0 - "GET / HTTP/1.1" 200 OK
+INFO:     18.218.118.203:0 - "GET / HTTP/1.1" 200 OK
+INFO:     198.23.242.162:0 - "GET /v2 HTTP/1.1" 404 Not Found
+INFO:     77.83.39.94:0 - "GET /.git/config HTTP/1.1" 404 Not Found
+INFO:     43.153.62.161:0 - "GET / HTTP/1.1" 200 OK
+INFO:     141.98.11.11:0 - "GET / HTTP/1.1" 200 OK
+INFO:     34.156.103.61:0 - "GET / HTTP/1.1" 200 OK
+INFO:     34.79.33.143:0 - "OPTIONS / HTTP/1.1" 405 Method Not Allowed
+INFO:     34.79.33.143:0 - "SXWT / HTTP/1.1" 405 Method Not Allowed
+INFO:     34.79.33.143:0 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     34.79.33.143:0 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     34.79.33.143:0 - "OPTIONS / HTTP/1.1" 405 Method Not Allowed
+INFO:     34.79.33.143:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.43:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     156.225.1.44:0 - "GET /version HTTP/1.1" 404 Not Found
+INFO:     156.225.1.44:0 - "GET / HTTP/1.1" 200 OK
+INFO:     156.225.1.44:0 - "GET / HTTP/1.1" 200 OK
+INFO:     156.225.1.44:0 - "GET /v1 HTTP/1.1" 404 Not Found
+INFO:     156.225.1.44:0 - "GET / HTTP/1.1" 200 OK
+INFO:     156.225.1.44:0 - "GET / HTTP/1.1" 200 OK
+INFO:     156.225.1.44:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     62.216.94.44:0 - "GET /.git/ HTTP/1.1" 404 Not Found
+INFO:     62.216.94.44:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     167.172.42.229:0 - "GET / HTTP/1.1" 200 OK
+INFO:     107.155.48.46:0 - "POST /hello.world?%ADd+allow_url_include%3d1+%ADd+auto_prepend_file%3dphp://input HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "POST /?%ADd+allow_url_include%3d1+%ADd+auto_prepend_file%3dphp://input HTTP/1.1" 405 Method Not Allowed
+INFO:     107.155.48.46:0 - "GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /vendor/phpunit/phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /vendor/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /vendor/phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /vendor/phpunit/phpunit/LICENSE/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /vendor/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /phpunit/phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /lib/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /lib/phpunit/phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /lib/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /lib/phpunit/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /laravel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /www/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /ws/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /yii/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /ws/ec/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /V2/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /tests/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /test/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /testing/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /api/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /demo/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /cms/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /crm/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /admin/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /backup/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /blog/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /workspace/drupal/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /panel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /public/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /apps/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /app/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /index.php?s=/index/\think\app/invokefunction&function=call_user_func_array&vars[0]=md5&vars[1][]=Hello HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /public/index.php?s=/index/\think\app/invokefunction&function=call_user_func_array&vars[0]=md5&vars[1][]=Hello HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /index.php?lang=../../../../../../../../usr/local/lib/php/pearcmd&+config-create+/&/<?echo(md5("hi"));?>+/tmp/index1.php HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /index.php?lang=../../../../../../../../tmp/index1 HTTP/1.1" 404 Not Found
+INFO:     107.155.48.46:0 - "GET /containers/json HTTP/1.1" 404 Not Found
+INFO:     185.213.174.141:0 - "GET /cgi-bin/luci/ HTTP/1.1" 404 Not Found
+INFO:     20.65.193.130:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.92:0 - "GET /SDK/webLanguage HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.backup HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.bak HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.old HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.save HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.sample HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.dist HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.dev HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.local HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.prod HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.production HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.staging HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.testing HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.development HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.production.local HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.development.local HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.example HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.php HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.json HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.yml HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.yaml HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.docker HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.docker.dev HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.dev.local HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.prod.local HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.live HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.envrc HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env.swp HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /.env~ HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /env.js HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /env.json HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /env.backup HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /env.bak HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /public/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /app/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /api/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /backend/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /laravel/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /core/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /vendor/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /storage/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /config/.env HTTP/1.1" 404 Not Found
+INFO:     45.61.150.163:0 - "GET /application/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /dn26-canary-f6a39cca843e4f1dbea2e4c416020add HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.docker HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /app/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /backend/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.prod HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.production.local HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.example HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /server/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.dev HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.development HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.production HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /api/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.staging HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.development.local HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.bak HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.old HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.local HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.backup HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.swp HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env~ HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /laravel/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /v1/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /web/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /v2/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /admin/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.git/config HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /core/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /src/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /private/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.svn/entries HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.git/HEAD HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.svn/wc.db HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /public/.env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config.yaml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /settings.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /config.js HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /settings.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /secrets.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.aws/credentials HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /application.properties HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /secrets.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /application.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /appsettings.Development.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php.old HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /application-prod.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php.bak HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /appsettings.Staging.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /web.config HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php.swp HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php.save HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /credentials.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /application-dev.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /appsettings.Production.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /appsettings.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php~ HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.txt HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /sites/default/settings.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /docker-compose.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /configuration.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /wp-config.php.orig HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.htpasswd HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /actuator/env HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /phpinfo.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /debug/vars HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.netrc HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /info.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /storage/logs/laravel.log HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.docker/config.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /docker-compose.prod.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.npmrc HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /docker-compose.yaml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /actuator/configprops HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.yarnrc HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /docker-compose.dev.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /database.yml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.my.cnf HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /id_rsa HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.ssh/id_rsa HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /google-credentials.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.pgpass HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /serviceAccountKey.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /db.sql HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /backup.sql HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /database.sql HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /keyfile.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.codex/auth.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /service-account.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /gcloud-service-key.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /firebase-adminsdk.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.codex/config.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /codex/auth.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.config/codex/auth.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /root/.codex/auth.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /dump.sql HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /home/.codex/auth.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /local.settings.json HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /.env.local.php HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     34.34.103.195:0 - "GET / HTTP/1.1" 200 OK
+INFO:     160.119.76.106:0 - "GET / HTTP/1.1" 200 OK
+INFO:     43.130.31.17:0 - "GET / HTTP/1.1" 200 OK
+INFO:     160.119.76.106:0 - "GET //admin/config.php HTTP/1.1" 404 Not Found
+INFO:     3.130.168.2:0 - "GET / HTTP/1.1" 200 OK
+INFO:     3.130.168.2:0 - "GET / HTTP/1.1" 200 OK
+INFO:     45.198.224.5:0 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     34.38.143.207:0 - "GET / HTTP/1.1" 200 OK
+INFO:     43.159.143.139:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.43:0 - "GET /cgi-bin/luci/%3Bstok%3D/locale HTTP/1.1" 404 Not Found
+INFO:     45.205.1.241:0 - "GET / HTTP/1.1" 200 OK
+INFO:     62.216.94.44:0 - "GET /.git/ HTTP/1.1" 404 Not Found
+INFO:     62.216.94.44:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     5.61.209.43:0 - "GET /cgi-bin/luci/%3Bstok%3D/locale HTTP/1.1" 404 Not Found
+INFO:     43.161.236.8:0 - "GET / HTTP/1.1" 200 OK
+INFO:     81.19.219.251:0 - "GET / HTTP/1.1" 200 OK
+INFO:     185.216.145.180:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     5.226.140.82:0 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     193.176.29.20:0 - "POST /mcp HTTP/1.1" 404 Not Found
+INFO:     31.14.254.92:0 - "GET /sse HTTP/1.1" 404 Not Found
+INFO:     43.164.190.28:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.43:0 - "GET / HTTP/1.1" 200 OK
+INFO:     65.49.20.69:0 - "GET / HTTP/1.1" 200 OK
+INFO:     51.254.59.113:0 - "GET / HTTP/1.1" 200 OK
+INFO:     65.49.20.69:0 - "GET /webui/ HTTP/1.1" 404 Not Found
+INFO:     65.49.20.69:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     65.49.20.69:0 - "GET /geoserver/web/ HTTP/1.1" 404 Not Found
+INFO:     141.98.11.11:0 - "GET / HTTP/1.1" 200 OK
+INFO:     176.65.149.236:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.43:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     115.231.78.3:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     43.135.186.135:0 - "GET / HTTP/1.1" 200 OK
+INFO:     77.83.39.94:0 - "GET /.git/index HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37410 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     45.198.224.5:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     45.63.4.69:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "GET /docs HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     52.123.138.236:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     143.105.152.152:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     72.145.152.0:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     143.105.152.152:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.152:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.152:0 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.152:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.152:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     170.106.140.110:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     86.54.31.46:0 - "GET / HTTP/1.1" 200 OK
+INFO:     86.54.31.46:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     86.54.31.46:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     86.54.31.46:0 - "GET /.well-known/security.txt HTTP/1.1" 404 Not Found
+INFO:     86.54.31.46:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     47.250.128.73:0 - "GET / HTTP/1.1" 200 OK
+INFO:     47.250.128.73:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     129.226.193.111:0 - "GET / HTTP/1.1" 200 OK
+INFO:     213.209.159.175:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.local HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.production HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.development HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.dev HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.staging HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.test HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.example HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.backup HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.envrc HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.aws/config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.aws/credentials HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.js HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.ini HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /configuration.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /configuration.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /configuration.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /settings.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /settings.py HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /settings.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /settings.ini HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /application.properties HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /application.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /application.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /secrets.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /secrets.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /secrets.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /credentials.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /credentials.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /credentials.ini HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /database.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /database.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /database.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /database.config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /app.config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /web.config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env~ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.bak HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.old HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.save HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.orig HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.dist HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php~ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.bak HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.old HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.save HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.orig HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.swp HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php.swo HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.git/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.git/config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.git/HEAD HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.git/index HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.git/logs/HEAD HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.svn/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.svn/entries HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.svn/wc.db HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.hg/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.hg/store/data/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.bzr/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /CVS/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.gitignore HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.gitattributes HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.gitlab-ci.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.github/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /error.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /access.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /debug.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /laravel.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /app.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /storage/logs/laravel.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /php_error.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /php_errors.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /logs/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /log/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /tmp/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /temp/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //admin HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //administrator HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //adminpanel HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //admin/login HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //admin.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //api/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //api/v1/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //api/v2/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //api/docs HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //swagger HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //swagger-ui.html HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //openapi.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //graphql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //graphiql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //actuator HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //actuator/env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //actuator/configprops HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //actuator/heapdump HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //phpinfo.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //info.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //phpmyadmin HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //pma HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //debug HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //console HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //_debug HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //server-status HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /docker-compose.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /docker-compose.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.dockerignore HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /kubernetes/secrets.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /k8s/secrets.yaml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /terraform.tfstate HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /terraform.tfstate.backup HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /ansible.cfg HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /group_vars/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /host_vars/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.kube/config HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /package.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /package-lock.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /yarn.lock HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /composer.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /composer.lock HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /requirements.txt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Pipfile HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Pipfile.lock HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Gemfile HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Gemfile.lock HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /pom.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /build.gradle HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /global.asax HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /global.asa HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /id_rsa HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /id_rsa.pub HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /id_dsa HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /id_ecdsa HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /id_ed25519 HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /private.key HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /server.key HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /ssl.key HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /cert.pem HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /server.crt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /fullchain.pem HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.htpasswd HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.htaccess HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /htpasswd.txt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /authorized_keys HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /known_hosts HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.idea/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.vscode/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.vs/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /sftp-config.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /FileZilla.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /winscp.ini HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.ftpconfig HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.remote-sync.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /nbproject/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /google-services.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /AndroidManifest.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Info.plist HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /firebase.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.firebaserc HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /security.txt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.well-known/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /crossdomain.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /clientaccesspolicy.xml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /README.md HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /INSTALL.md HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /CHANGELOG.md HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /license.txt HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /LICENSE HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /test/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /tests/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /dev/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /staging/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /old/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /beta/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /demo/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //login HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //signin HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //register HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //forgot-password HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //wp-admin HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //wp-login.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //wp-config.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //adminer.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //myadmin/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET //mysql/ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /index.php~ HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /index.php.bak HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /index.php.old HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /dump.sql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /database.sql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /db.sql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /mysql.sql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /backup.sql HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.DS_Store HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /Thumbs.db HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /wp-config.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /terraform.tfvars HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /ansible/vault.yml HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /test_smtp.py HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /readme.md HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /docs/setup.md HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.vscode/settings.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /appsettings.json HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.sample.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.local.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.production.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.dev.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /twilio/.env.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /config/.env.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /sendgrid/.env.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.php.bak HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.php-bak HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.php-backup HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.php.backup HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /test/.env.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.example.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /app_dev.php/_profiler/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /var/.env.local.php HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /app/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /admin/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /backend/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /core/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /laravel/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.prod HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /uat/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /wp-login/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api2/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.previous HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env.dist HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env.prod HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/admin-app/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/development/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/enviroments/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env.project HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/laravel/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.db HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/sources/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /laravel/.env.example HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /.env.log HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/apps/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/api/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env.development HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/docker/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/shared/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /ci-cd/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/live_env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/back/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env.save HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/app/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/private/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/cp/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/system/.env HTTP/1.1" 404 Not Found
+INFO:     213.209.159.175:0 - "GET /api/.env%3A80/script/.env HTTP/1.1" 404 Not Found
+INFO:     45.194.67.27:0 - "GET / HTTP/1.1" 200 OK
+INFO:     81.19.219.243:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.226.140.74:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     188.240.59.61:0 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     31.14.254.67:0 - "POST /mcp HTTP/1.1" 404 Not Found
+INFO:     188.240.59.50:0 - "GET /sse HTTP/1.1" 404 Not Found
+INFO:     45.198.224.5:0 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     172.202.117.124:0 - "GET /developmentserver/metadatauploader HTTP/1.1" 404 Not Found
+INFO:     66.132.172.103:0 - "GET / HTTP/1.1" 200 OK
+INFO:     66.132.172.103:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     66.132.172.103:0 - "GET /wiki HTTP/1.1" 404 Not Found
+INFO:     43.159.141.150:0 - "GET / HTTP/1.1" 200 OK
+INFO:     45.156.129.189:0 - "GET / HTTP/1.1" 200 OK
+INFO:     5.61.209.43:0 - "GET /cgi-bin/luci/%3Bstok%3D/locale HTTP/1.1" 404 Not Found
+INFO:     94.154.43.254:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET / HTTP/1.1" 200 OK
+INFO:     115.231.78.3:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     115.231.78.3:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     172.232.108.36:0 - "GET / HTTP/1.1" 200 OK
+INFO:     43.135.183.82:0 - "GET / HTTP/1.1" 200 OK
+INFO:     207.90.244.28:0 - "GET / HTTP/1.1" 200 OK
+INFO:     207.90.244.28:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     207.90.244.28:0 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     207.90.244.28:0 - "GET /.well-known/security.txt HTTP/1.1" 404 Not Found
+INFO:     45.205.1.246:0 - "GET / HTTP/1.1" 200 OK
+INFO:     141.98.11.11:0 - "GET / HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 401 Unauthorized
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
+INFO:     143.105.152.149:0 - "POST /auth/login HTTP/1.1" 200 OK
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+INFO:     143.105.152.149:0 - "POST /api/chat HTTP/1.1" 500 Internal Server Error
