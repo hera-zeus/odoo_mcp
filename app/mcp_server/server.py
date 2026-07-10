@@ -17,19 +17,47 @@ mcp = FastMCP(
 
 _odoo          = OdooClient()
 _admin_session: str | None = None
+company_info:   dict        = {}   # nom + devise lus depuis res.company au démarrage
 
 
 async def init_admin_session() -> None:
-    """Initialise la session admin Odoo au démarrage du serveur."""
-    global _admin_session
+    """Initialise la session admin Odoo et charge les infos de l'entreprise."""
+    global _admin_session, company_info
     if not settings.ODOO_ADMIN_LOGIN or not settings.ODOO_ADMIN_KEY:
-        logger.warning("⚠️ ODOO_ADMIN_LOGIN / ODOO_ADMIN_KEY non configurés — outils MCP limités")
+        logger.warning("ODOO_ADMIN_LOGIN / ODOO_ADMIN_KEY non configurés — outils MCP limités")
         return
     _admin_session = await _odoo.authenticate(settings.ODOO_ADMIN_LOGIN, settings.ODOO_ADMIN_KEY)
-    if _admin_session:
-        logger.info("✅ Session admin MCP Odoo initialisée")
-    else:
-        logger.error("❌ Impossible d'initialiser la session admin MCP")
+    if not _admin_session:
+        logger.error("Impossible d'initialiser la session admin MCP")
+        return
+    logger.info("Session admin MCP Odoo initialisée")
+    await _fetch_company_info()
+
+
+async def _fetch_company_info() -> None:
+    """Lit le nom et la devise de la société principale depuis res.company."""
+    global company_info
+    try:
+        records = await _odoo.search_read(
+            model="res.company",
+            domain=[],
+            fields=["name", "currency_id"],
+            odoo_session_id=_admin_session,
+            limit=1
+        )
+        if records:
+            company = records[0]
+            currency = company.get("currency_id")
+            company_info = {
+                "name":     company.get("name", settings.COMPANY_NAME),
+                "currency": currency[1] if isinstance(currency, list) else settings.COMPANY_CURRENCY
+            }
+            logger.info(f"Société chargée : {company_info['name']} — devise : {company_info['currency']}")
+        else:
+            company_info = {"name": settings.COMPANY_NAME, "currency": settings.COMPANY_CURRENCY}
+    except Exception as e:
+        logger.error(f"Erreur lecture res.company: {e}")
+        company_info = {"name": settings.COMPANY_NAME, "currency": settings.COMPANY_CURRENCY}
 
 
 # ──────────────────────────────────────────────

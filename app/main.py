@@ -19,7 +19,7 @@ from pydantic import BaseModel
 import httpx
 
 from app.config import settings
-from app.mcp_server.server import create_mcp_server, init_admin_session
+from app.mcp_server.server import create_mcp_server, init_admin_session, company_info
 from app.auth.manager import OdooUserAuth
 from app.llm_gateway.gateway import LiteLLMGateway
 from app.mcp_server.tools import execute_tool, TOOLS_DEFINITION
@@ -378,9 +378,11 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     session_history.append({"role": "user", "content": request.message})
     
     # 2. Prompt système contextualisé
-    today = datetime.now()
+    today    = datetime.now()
+    currency = company_info.get("currency") or settings.COMPANY_CURRENCY
+    company  = company_info.get("name")     or settings.COMPANY_NAME
     system_prompt = f"""
-    Tu es l'assistant IA d'aide à la décision de {settings.COMPANY_NAME}.
+    Tu es l'assistant IA d'aide à la décision de {company}.
     Utilisateur actuel : {user['name']} ({user['email']}).
     Date et heure actuelles : {today.strftime("%A %d %B %Y, %H:%M")} (fuseau serveur).
     Année en cours : {today.year}. Mois en cours : {today.month}.
@@ -391,7 +393,7 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     - N'invente JAMAIS de chiffres (pas d'hallucinations).
     - Si tu n'as pas les données ou si l'outil retourne une erreur, dis-le clairement.
     - Respecte la confidentialité : ne donne pas d'informations sur les données d'autres utilisateurs.
-    - La devise de l'entreprise est le {settings.COMPANY_CURRENCY}. Utilise TOUJOURS cette devise pour les montants. N'utilise jamais €, $, ou toute autre devise sauf si explicitement demandé.
+    - La devise officielle de {company} est le {currency}. Utilise TOUJOURS {currency} pour tous les montants. N'utilise jamais €, $, £ ou toute autre devise sauf demande explicite.
     - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE ou sMAPE).
     - Pour toute requête sans date précisée, utilise l'année en cours ({today.year}) comme référence.
     """
