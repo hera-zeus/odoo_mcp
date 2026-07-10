@@ -31,6 +31,10 @@ class Settings:
     ENV: str = os.getenv("ENV", "development")
     SESSION_TIMEOUT: int = int(os.getenv("SESSION_TIMEOUT", "3600"))
 
+    # Contexte métier
+    COMPANY_CURRENCY: str = os.getenv("COMPANY_CURRENCY", "XAF")
+    COMPANY_NAME: str     = os.getenv("COMPANY_NAME", "ST Digital")
+
     # Paths
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     CACHE_DIR: str = os.path.join(BASE_DIR, "data", "cache")
