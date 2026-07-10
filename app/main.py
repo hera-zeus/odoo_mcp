@@ -311,10 +311,13 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     session_history.append({"role": "user", "content": request.message})
     
     # 2. Prompt système contextualisé
+    today = datetime.now()
     system_prompt = f"""
     Tu es l'assistant IA d'aide à la décision de ST Digital.
     Utilisateur actuel : {user['name']} ({user['email']}).
-    
+    Date et heure actuelles : {today.strftime("%A %d %B %Y, %H:%M")} (fuseau serveur).
+    Année en cours : {today.year}. Mois en cours : {today.month}.
+
     RÈGLES STRICTES :
     - Réponds toujours en français, de manière professionnelle et concise.
     - Base tes réponses UNIQUEMENT sur les données retournées par les outils MCP.
@@ -322,7 +325,8 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     - Si tu n'as pas les données ou si l'outil retourne une erreur, dis-le clairement.
     - Respecte la confidentialité : ne donne pas d'informations sur les données d'autres utilisateurs.
     - Quand tu présentes des chiffres, précise toujours l'unité (€, unités, %).
-    - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE).
+    - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE ou sMAPE).
+    - Pour toute requête sans date précisée, utilise l'année en cours ({today.year}) comme référence.
     """
 
     try:
