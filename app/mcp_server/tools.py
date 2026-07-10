@@ -144,7 +144,7 @@ async def _search_odoo_records(args: Dict, odoo_session_id: str) -> str:
     model  = args.get("model", "sale.order")
     domain = args.get("domain", [])
     fields = args.get("fields", ["name"])
-    limit  = args.get("limit", 25)
+    limit  = min(args.get("limit", 10), 50)   # max 50 pour rester sous la limite de tokens
 
     records = await odoo_client.search_read(
         model=model,

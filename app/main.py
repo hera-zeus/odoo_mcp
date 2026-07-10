@@ -247,6 +247,21 @@ async def root():
     </html>
     """
 
+MAX_TOOL_RESULT_CHARS = 6000   # ~1500 tokens — évite d'exploser la limite 10k/min
+
+
+def truncate_tool_result(content: str) -> str:
+    """Tronque un résultat d'outil trop long pour rester sous la limite de tokens."""
+    if len(content) <= MAX_TOOL_RESULT_CHARS:
+        return content
+    truncated = content[:MAX_TOOL_RESULT_CHARS]
+    # Couper proprement à la dernière virgule JSON pour ne pas casser le parsing
+    last_comma = truncated.rfind(',')
+    if last_comma > MAX_TOOL_RESULT_CHARS * 0.8:
+        truncated = truncated[:last_comma]
+    return truncated + '\n... [résultat tronqué — trop volumineux]'
+
+
 def safe_history_slice(history: list, max_messages: int = 10) -> list:
     """
     Retourne jusqu'à max_messages messages sans jamais couper une séquence
@@ -364,11 +379,12 @@ async def chat_endpoint(request: ChatRequest, req: Request):
                 )
 
                 # On injecte le résultat de l'outil dans l'historique pour le LLM
+                # (tronqué pour ne pas dépasser la limite de tokens)
                 session_history.append({
                     "tool_call_id": tool_call.id,
                     "role": "tool",
                     "name": function_name,
-                    "content": function_response
+                    "content": truncate_tool_result(function_response)
                 })
 
             # 6. On renvoie l'historique enrichi au LLM pour qu'il génère la réponse finale
