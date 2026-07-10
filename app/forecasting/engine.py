@@ -21,65 +21,86 @@ class ForecastEngine:
             series_clean = series.copy().astype(float)
             series_clean = series_clean.replace(0, np.nan).interpolate(method='linear').bfill().ffill()
 
-            n = len(series_clean)
-
+            n          = len(series_clean)
             last_date  = series_clean.index[-1]
             real_freq  = pd.infer_freq(series_clean.index) or 'MS'
 
+            # Diagnostics
+            cv = series_clean.std() / series_clean.mean() if series_clean.mean() != 0 else 0
+            n_zeros_orig = int((series == 0).sum())
+            logger.info(
+                f"Série: n={n}, min={series_clean.min():.0f}, max={series_clean.max():.0f}, "
+                f"mean={series_clean.mean():.0f}, CV={cv:.2f}, zéros_originaux={n_zeros_orig}"
+            )
+
+            # Transformation log pour données financières à forte variance (CV > 0.5)
+            # Normalise la variance et améliore drastiquement la convergence ETS
+            use_log = cv > 0.5 and series_clean.min() > 0
+            if use_log:
+                series_fit = np.log(series_clean)
+                logger.info("Transformation log appliquée (CV élevé)")
+            else:
+                series_fit = series_clean
+
             if n >= 24:
                 seasonal_periods = 12
-                # Tester additif vs multiplicatif et garder le meilleur AIC
-                best_fit = None
-                best_aic = np.inf
-                for trend in ('add',):
-                    for seasonal in ('add', 'mul'):
-                        try:
-                            m = ExponentialSmoothing(
-                                series_clean,
-                                trend=trend,
-                                seasonal=seasonal,
-                                seasonal_periods=seasonal_periods
-                            )
-                            f = m.fit(optimized=True)
-                            if f.aic < best_aic:
-                                best_aic = f.aic
-                                best_fit = f
-                                best_seasonal = seasonal
-                        except Exception:
-                            continue
+                best_fit     = None
+                best_aic     = np.inf
+                best_seasonal = 'add'
+                for seasonal in ('add', 'mul'):
+                    try:
+                        m = ExponentialSmoothing(
+                            series_fit,
+                            trend='add',
+                            seasonal=seasonal,
+                            seasonal_periods=seasonal_periods
+                        )
+                        f = m.fit(optimized=True)
+                        if f.aic < best_aic:
+                            best_aic      = f.aic
+                            best_fit      = f
+                            best_seasonal = seasonal
+                    except Exception:
+                        continue
 
                 if best_fit is None:
                     raise ValueError("Aucune configuration ETS n'a convergé")
 
                 fit          = best_fit
                 use_seasonal = best_seasonal
-
             else:
                 seasonal_periods = None
                 use_seasonal     = None
-                model = ExponentialSmoothing(series_clean, trend='add', seasonal=None)
+                model = ExponentialSmoothing(series_fit, trend='add', seasonal=None)
                 fit   = model.fit(optimized=True)
 
-            forecast       = fit.forecast(periods)
-            fitted         = fit.fittedvalues
+            # Retransformation si log appliqué
+            if use_log:
+                forecast = np.exp(fit.forecast(periods))
+                fitted   = np.exp(fit.fittedvalues)
+            else:
+                forecast = fit.forecast(periods)
+                fitted   = fit.fittedvalues
+
             forecast_dates = pd.date_range(start=last_date, periods=periods + 1, freq=real_freq)[1:]
 
             logger.info(
-                f"ETS: n={n}, seasonal={use_seasonal}, "
-                f"seasonal_periods={seasonal_periods}, AIC={fit.aic:.1f}"
+                f"ETS: seasonal={use_seasonal}, log={use_log}, AIC={fit.aic:.1f}"
             )
 
             return {
-                'forecast':      forecast,
-                'fitted':        fitted,
-                'series_clean':  series_clean,   # série préprocessée pour calculate_metrics
+                'forecast':       forecast,
+                'fitted':         fitted,
+                'series_clean':   series_clean,
                 'forecast_dates': forecast_dates,
                 'model_info': {
-                    'n_points':        n,
-                    'trend':           'add',
-                    'seasonal':        use_seasonal,
+                    'n_points':         n,
+                    'trend':            'add',
+                    'seasonal':         use_seasonal,
                     'seasonal_periods': seasonal_periods,
-                    'aic':             fit.aic
+                    'log_transform':    use_log,
+                    'cv':               round(cv, 3),
+                    'aic':              fit.aic
                 }
             }
         except Exception as e:
