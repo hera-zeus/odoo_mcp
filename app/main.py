@@ -6,8 +6,9 @@ Architecture: ERP Odoo + Model Context Protocol + Multi-LLM Gateway
 import asyncio
 import json
 import logging
+import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, Dict, Any, List
 
 from fastapi import FastAPI, Request, HTTPException, Depends
@@ -94,8 +95,66 @@ class ForecastRequestAPI(BaseModel):
     horizon: int = 6
     period: str = "M"  # M=Month, W=Week, D=Day
 
-# Sessions en mémoire (à remplacer par Redis en production)
-sessions: Dict[str, List[Dict[str, str]]] = {}
+# ──────────────────────────────────────────────
+# Persistance des sessions (fichier JSON)
+# ──────────────────────────────────────────────
+SESSIONS_FILE = os.path.join(settings.CACHE_DIR, "sessions.json")
+
+
+def _session_expired(session: dict) -> bool:
+    created_at = session.get("created_at")
+    if not created_at:
+        return True
+    if isinstance(created_at, str):
+        created_at = datetime.fromisoformat(created_at)
+    return datetime.now() - created_at > timedelta(seconds=settings.SESSION_TIMEOUT)
+
+
+def load_sessions() -> Dict[str, dict]:
+    """Charge les sessions persistées depuis le fichier JSON (ignore les expirées)."""
+    if not os.path.exists(SESSIONS_FILE):
+        return {}
+    try:
+        with open(SESSIONS_FILE, "r") as f:
+            raw = json.load(f)
+        valid = {
+            sid: s for sid, s in raw.items()
+            if not _session_expired(s)
+        }
+        expired_count = len(raw) - len(valid)
+        if expired_count:
+            logger.info(f"{expired_count} session(s) expirée(s) supprimées au chargement")
+        # Réhydrater created_at en datetime
+        for s in valid.values():
+            s["created_at"] = datetime.fromisoformat(s["created_at"])
+            s.setdefault("history", [])
+        return valid
+    except Exception as e:
+        logger.error(f"Erreur chargement sessions: {e}")
+        return {}
+
+
+def save_sessions(sessions: Dict[str, dict]) -> None:
+    """Persiste les sessions actives dans le fichier JSON (sans l'historique de chat)."""
+    try:
+        serializable = {}
+        for sid, s in sessions.items():
+            serializable[sid] = {
+                "user":             s["user"],
+                "odoo_session_id":  s["odoo_session_id"],
+                "created_at":       s["created_at"].isoformat()
+                                    if isinstance(s["created_at"], datetime)
+                                    else s["created_at"],
+                # history non persisté : trop volumineux et lié à la conversation
+            }
+        with open(SESSIONS_FILE, "w") as f:
+            json.dump(serializable, f)
+    except Exception as e:
+        logger.error(f"Erreur sauvegarde sessions: {e}")
+
+
+sessions: Dict[str, dict] = load_sessions()
+logger.info(f"{len(sessions)} session(s) restaurée(s) depuis {SESSIONS_FILE}")
 # ==========================================
 # Catalogue des Tools MCP (Function Calling)
 # ==========================================
@@ -294,14 +353,22 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     Le LLM peut appeler les outils search_odoo_records et generate_forecast
     pour répondre aux questions de l'utilisateur.
     """
-    # Vérification de la session
+    # Vérification et TTL de la session
     if request.session_id not in sessions:
         raise HTTPException(status_code=401, detail="Session invalide")
-        
+
     session_data = sessions[request.session_id]
-    user = session_data["user"]
+    if _session_expired(session_data):
+        del sessions[request.session_id]
+        save_sessions(sessions)
+        raise HTTPException(status_code=401, detail="Session expirée")
+
+    # Renouveler le TTL à chaque activité
+    session_data["created_at"] = datetime.now()
+
+    user            = session_data["user"]
     odoo_session_id = session_data["odoo_session_id"]
-    
+
     # Récupération de l'historique depuis la session
     session_history = session_data.get("history", [])
     
@@ -570,7 +637,8 @@ async def revoke_session(session_id: str, admin: dict = Depends(require_admin)):
     """Révoque une session utilisateur"""
     if session_id in sessions:
         del sessions[session_id]
-        logger.info(f"🔒 Session révoquée par admin: {session_id}")
+        save_sessions(sessions)
+        logger.info(f"Session révoquée par admin: {session_id}")
         return {"status": "révoquée", "session_id": session_id}
     raise HTTPException(status_code=404, detail="Session introuvable")
 
@@ -612,16 +680,16 @@ async def login_endpoint(credentials: LoginRequest):
             detail="Échec de l'authentification. Vérifiez votre login et votre API Key Odoo."
         )
     
-    # Création de la session locale
+    # Création et persistance de la session
     session_id = str(uuid.uuid4())
     sessions[session_id] = {
-        "user": user_info,
-        "odoo_session_id": user_info["odoo_session_id"],
-        "history": [],
-        "created_at": datetime.now()
+        "user":             user_info,
+        "odoo_session_id":  user_info["odoo_session_id"],
+        "history":          [],
+        "created_at":       datetime.now()
     }
-    
-    logger.info(f"✅ Connexion réussie pour {user_info['name']} (Session: {session_id})")
+    save_sessions(sessions)
+    logger.info(f"Connexion réussie pour {user_info['name']} (Session: {session_id})")
     
     return {
         "session_id": session_id,
@@ -635,10 +703,15 @@ async def login_endpoint(credentials: LoginRequest):
 
 @app.get("/api/session/check")
 async def check_session(request: Request):
-    """Vérifie si une session utilisateur est encore valide"""
+    """Vérifie si une session utilisateur est encore valide et non expirée"""
     session_id = request.headers.get("X-Session-ID")
     if session_id and session_id in sessions:
-        user = sessions[session_id]["user"]
+        session = sessions[session_id]
+        if _session_expired(session):
+            del sessions[session_id]
+            save_sessions(sessions)
+            raise HTTPException(status_code=401, detail="Session expirée")
+        user = session["user"]
         return {"valid": True, "user": {"uid": user["uid"], "name": user["name"], "email": user["email"]}}
     raise HTTPException(status_code=401, detail="Session invalide ou expirée")
 
