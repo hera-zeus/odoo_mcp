@@ -393,7 +393,7 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     - N'invente JAMAIS de chiffres (pas d'hallucinations).
     - Si tu n'as pas les données ou si l'outil retourne une erreur, dis-le clairement.
     - Respecte la confidentialité : ne donne pas d'informations sur les données d'autres utilisateurs.
-    - La devise officielle de {company} est le {currency}. Utilise TOUJOURS {currency} pour tous les montants. N'utilise jamais €, $, £ ou toute autre devise sauf demande explicite.
+    - La devise officielle de {company} est le {currency}. Utilise TOUJOURS {currency} pour tous les montants. N'utilise pas autre devise sauf demande explicite.
     - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE ou sMAPE).
     - Pour toute requête sans date précisée, utilise l'année en cours ({today.year}) comme référence.
     """
