@@ -124,7 +124,7 @@ async def get_forecast(
         return json.dumps({"error": f"Aucune donnée trouvée pour {model}.{field}."})
 
     result  = engine.forecast_ets(series, periods=periods)
-    metrics = engine.calculate_metrics(series, result["fitted"])
+    metrics = engine.calculate_metrics(result["series_clean"], result["fitted"])
 
     forecast_dict = {
         str(d.date()): round(float(v), 2)

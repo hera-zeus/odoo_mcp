@@ -11,62 +11,79 @@ class ForecastEngine:
 
     def forecast_ets(self, series: pd.Series, periods: int = 6) -> Dict:
         """
-        Prévision par lissage exponentiel (ETS)
+        Prévision par lissage exponentiel (ETS).
+        Sélectionne automatiquement la meilleure configuration (add/mul) via AIC.
+        Retourne aussi series_clean pour que les appelants calculent les métriques
+        sur la même série que celle utilisée pour l'ajustement.
         """
         try:
-            # Remplacer les zéros par NaN puis interpoler linéairement
-            # Les zéros de mois sans activité faussent la tendance et la saisonnalité
-            series = series.copy().astype(float)
-            series = series.replace(0, np.nan).interpolate(method='linear').bfill().ffill()
+            # Interpolation des zéros — les mois sans activité faussent trend et saisonnalité
+            series_clean = series.copy().astype(float)
+            series_clean = series_clean.replace(0, np.nan).interpolate(method='linear').bfill().ffill()
 
-            n = len(series)
+            n = len(series_clean)
 
-            # Saisonnalité annuelle uniquement si assez de données (>= 2 cycles complets)
-            # Pour des données mensuelles : il faut >= 24 points pour seasonal_periods=12
-            # En dessous, on désactive la saisonnalité plutôt que d'utiliser une
-            # saisonnalité trimestrielle (4) incorrecte sur du mensuel.
+            last_date  = series_clean.index[-1]
+            real_freq  = pd.infer_freq(series_clean.index) or 'MS'
+
             if n >= 24:
                 seasonal_periods = 12
-                use_seasonal = 'add'
+                # Tester additif vs multiplicatif et garder le meilleur AIC
+                best_fit = None
+                best_aic = np.inf
+                for trend in ('add',):
+                    for seasonal in ('add', 'mul'):
+                        try:
+                            m = ExponentialSmoothing(
+                                series_clean,
+                                trend=trend,
+                                seasonal=seasonal,
+                                seasonal_periods=seasonal_periods
+                            )
+                            f = m.fit(optimized=True)
+                            if f.aic < best_aic:
+                                best_aic = f.aic
+                                best_fit = f
+                                best_seasonal = seasonal
+                        except Exception:
+                            continue
+
+                if best_fit is None:
+                    raise ValueError("Aucune configuration ETS n'a convergé")
+
+                fit          = best_fit
+                use_seasonal = best_seasonal
+
             else:
                 seasonal_periods = None
-                use_seasonal = None
+                use_seasonal     = None
+                model = ExponentialSmoothing(series_clean, trend='add', seasonal=None)
+                fit   = model.fit(optimized=True)
 
-            model = ExponentialSmoothing(
-                series,
-                trend='add',
-                seasonal=use_seasonal,
-                seasonal_periods=seasonal_periods
-            )
-
-            fit = model.fit(optimized=True)
-            forecast = fit.forecast(periods)
-            fitted = fit.fittedvalues
-
-            # Générer les dates futures en utilisant la fréquence réelle de la série
-            last_date      = series.index[-1]
-            real_freq      = pd.infer_freq(series.index) or 'MS'
+            forecast       = fit.forecast(periods)
+            fitted         = fit.fittedvalues
             forecast_dates = pd.date_range(start=last_date, periods=periods + 1, freq=real_freq)[1:]
 
             logger.info(
-                f"📈 ETS ajusté: n={n}, saisonnalité={use_seasonal}, "
+                f"ETS: n={n}, seasonal={use_seasonal}, "
                 f"seasonal_periods={seasonal_periods}, AIC={fit.aic:.1f}"
             )
 
             return {
-                'forecast': forecast,
-                'fitted': fitted,
+                'forecast':      forecast,
+                'fitted':        fitted,
+                'series_clean':  series_clean,   # série préprocessée pour calculate_metrics
                 'forecast_dates': forecast_dates,
                 'model_info': {
-                    'n_points': n,
-                    'trend': 'add',
-                    'seasonal': use_seasonal,
+                    'n_points':        n,
+                    'trend':           'add',
+                    'seasonal':        use_seasonal,
                     'seasonal_periods': seasonal_periods,
-                    'aic': fit.aic
+                    'aic':             fit.aic
                 }
             }
         except Exception as e:
-            logger.error(f"❌ Erreur de prévision ETS: {e}")
+            logger.error(f"Erreur de prévision ETS: {e}")
             raise
 
     def calculate_metrics(self, actual: pd.Series, predicted: pd.Series) -> Dict:

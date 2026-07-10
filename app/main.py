@@ -435,13 +435,13 @@ async def forecast_endpoint(request: ForecastRequestAPI):
             periods=request.horizon
         )
         
-        # 3. Calculer les métriques
+        # 3. Calculer les métriques sur la série préprocessée (cohérente avec le modèle)
         metrics = forecast_engine.calculate_metrics(
-            actual=data[-len(forecast_result['fitted']):],
+            actual=forecast_result['series_clean'],
             predicted=forecast_result['fitted']
         )
-        
-        logger.info(f"✅ Prévision générée: MAPE={metrics['mape']:.2f}%")
+
+        logger.info(f"Prévision générée: MAPE={metrics['mape']}%, sMAPE={metrics['smape']}%")
         
         return {
             "forecast": forecast_result['forecast'].tolist(),
