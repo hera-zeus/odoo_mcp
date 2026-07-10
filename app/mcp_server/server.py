@@ -159,23 +159,40 @@ async def get_forecast(
         for d, v in zip(result["forecast_dates"], result["forecast"])
     }
 
-    return json.dumps({
+    model_info = result.get("model_info", {})
+    is_wma     = model_info.get("algo") == "WMA"
+
+    response = {
         "type":        "forecast",
         "odoo_model":  model,
         "odoo_field":  field,
-        "algo":        "Holt-Winters ETS",
-        "n_history":   result["model_info"]["n_points"],
+        "algo":        model_info.get("algo", "ETS"),
+        "n_history":   model_info.get("n_points"),
         "periods":     periods,
         "granularity": period,
         "forecast":    forecast_dict,
         "metrics": {
             "mae":      round(metrics.get("mae", 0), 2),
             "rmse":     round(metrics.get("rmse", 0), 2),
-            "mape":     metrics.get("mape"),
             "smape":    round(metrics.get("smape", 0), 2),
             "n_points": metrics.get("n_points", 0),
+            "mape":     None if is_wma else metrics.get("mape"),
+            "mape_note": (
+                "MAPE non affiché — données sporadiques (CV élevé). "
+                "MAE, RMSE et sMAPE sont les indicateurs pertinents."
+            ) if is_wma else None,
         }
-    }, ensure_ascii=False, default=str)
+    }
+
+    if is_wma:
+        response["wma_info"] = {
+            "valeur_centrale": model_info.get("wma_value"),
+            "borne_basse":     model_info.get("lower_bound"),
+            "borne_haute":     model_info.get("upper_bound"),
+            "interpretation":  model_info.get("reason")
+        }
+
+    return json.dumps(response, ensure_ascii=False, default=str)
 
 
 def create_mcp_server() -> FastMCP:

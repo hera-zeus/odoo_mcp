@@ -206,7 +206,9 @@ async def _get_forecast(args: Dict, odoo_session_id: str) -> str:
         }
 
         model_info = result.get("model_info", {})
-        response   = {
+        is_wma     = model_info.get("algo") == "WMA"
+
+        response = {
             "type":        "forecast",
             "odoo_model":  model,
             "odoo_field":  field,
@@ -217,19 +219,25 @@ async def _get_forecast(args: Dict, odoo_session_id: str) -> str:
             "metrics": {
                 "mae":      round(metrics.get("mae", 0), 2),
                 "rmse":     round(metrics.get("rmse", 0), 2),
-                "mape":     metrics.get("mape"),
                 "smape":    round(metrics.get("smape", 0), 2),
                 "n_points": metrics.get("n_points", 0),
+                # MAPE masqué pour WMA : non significatif sur demande sporadique
+                "mape":     None if is_wma else metrics.get("mape"),
+                "mape_note": (
+                    "MAPE non affiché — données sporadiques (CV élevé). "
+                    "MAE, RMSE et sMAPE sont les indicateurs pertinents."
+                ) if is_wma else None,
             }
         }
-        # Inclure les infos WMA (intervalle de confiance) si applicable
-        if model_info.get("algo") == "WMA":
+
+        if is_wma:
             response["wma_info"] = {
                 "valeur_centrale": model_info.get("wma_value"),
                 "borne_basse":     model_info.get("lower_bound"),
                 "borne_haute":     model_info.get("upper_bound"),
                 "interpretation":  model_info.get("reason")
             }
+
         return json.dumps(response, ensure_ascii=False, default=str)
 
     except Exception as e:
