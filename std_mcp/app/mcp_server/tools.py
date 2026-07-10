@@ -43,28 +43,53 @@ TOOLS_DEFINITION = [
     {
         "type": "function",
         "function": {
-            "name": "get_sales_forecast",
-            "description": "Génère des prévisions de ventes sur les prochains mois en utilisant le lissage exponentiel de Holt-Winters. Utilise cet outil quand l'utilisateur demande des prévisions, tendances futures ou projections.",
+            "name": "get_forecast",
+            "description": (
+                "Génère des prévisions sur les prochains mois pour n'importe quel champ numérique "
+                "d'un modèle Odoo, via lissage exponentiel Holt-Winters (ETS). "
+                "Utilise cet outil quand l'utilisateur demande des prévisions, projections ou tendances futures "
+                "(ventes, achats, charges salariales, consommation stock, etc.)."
+            ),
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "periods": {
-                        "type": "integer",
-                        "description": "Nombre de mois à prévoir",
-                        "default": 6
+                    "model": {
+                        "type": "string",
+                        "description": "Modèle Odoo source (ex: sale.order, account.move, purchase.order, hr.payslip, stock.move)"
+                    },
+                    "field": {
+                        "type": "string",
+                        "description": "Champ numérique à prévoir (ex: amount_total, net_wage, product_uom_qty)"
+                    },
+                    "date_field": {
+                        "type": "string",
+                        "description": "Champ date du modèle (ex: date_order pour sale.order, invoice_date pour account.move, date_from pour hr.payslip)"
+                    },
+                    "domain": {
+                        "type": "array",
+                        "description": "Filtres additionnels Odoo (ex: [['state','=','posted']] pour factures validées)",
+                        "default": []
                     },
                     "start_date": {
                         "type": "string",
-                        "description": "Date de début des données historiques (format YYYY-MM-DD)",
-                        "default": "2025-01-01"
+                        "description": "Début de l'historique (YYYY-MM-DD)"
                     },
                     "end_date": {
                         "type": "string",
-                        "description": "Date de fin des données historiques (format YYYY-MM-DD)",
-                        "default": "2026-06-30"
+                        "description": "Fin de l'historique (YYYY-MM-DD)"
+                    },
+                    "periods": {
+                        "type": "integer",
+                        "description": "Nombre de périodes à prévoir (défaut: 6)",
+                        "default": 6
+                    },
+                    "period": {
+                        "type": "string",
+                        "description": "Granularité : 'D' (jour), 'W' (semaine), 'M' (mois), 'Q' (trimestre). Défaut: 'M'",
+                        "default": "M"
                     }
                 },
-                "required": []
+                "required": ["model", "field", "date_field", "start_date", "end_date"]
             }
         }
     },
@@ -100,8 +125,8 @@ async def execute_tool(
         if tool_name == "search_odoo_records":
             return await _search_odoo_records(tool_args, odoo_session_id)
 
-        elif tool_name == "get_sales_forecast":
-            return await _get_sales_forecast(tool_args, odoo_session_id)
+        elif tool_name == "get_forecast":
+            return await _get_forecast(tool_args, odoo_session_id)
 
         elif tool_name == "get_odoo_models":
             return await _get_odoo_models(tool_args, odoo_session_id)
@@ -144,47 +169,57 @@ async def _search_odoo_records(args: Dict, odoo_session_id: str) -> str:
     }, ensure_ascii=False, default=str)
 
 
-async def _get_sales_forecast(args: Dict, odoo_session_id: str) -> str:
-    """Génère des prévisions de ventes via le moteur prédictif"""
+async def _get_forecast(args: Dict, odoo_session_id: str) -> str:
+    """Génère des prévisions sur n'importe quel champ numérique d'un modèle Odoo"""
     try:
         from app.forecasting.engine import ForecastEngine
         engine     = ForecastEngine()
+        model      = args.get("model", "sale.order")
+        field      = args.get("field", "amount_total")
+        date_field = args.get("date_field", "date_order")
+        domain     = args.get("domain", [])
+        start_date = args.get("start_date", "2024-01-01")
+        end_date   = args.get("end_date", "2026-12-31")
         periods    = args.get("periods", 6)
-        start_date = args.get("start_date", "2025-01-01")
-        end_date   = args.get("end_date", "2026-06-30")
+        period     = args.get("period", "M")
 
         series = await odoo_client.get_time_series(
-            table="sale.order",
-            field="amount_total",
+            table=model,
+            field=field,
+            date_field=date_field,
+            domain=domain,
             start_date=start_date,
             end_date=end_date,
-            period="M",
+            period=period,
             odoo_session_id=odoo_session_id
         )
 
         if series.empty:
-            return json.dumps({
-                "error": "Pas assez de données historiques pour générer une prévision."
-            })
+            return json.dumps({"error": f"Aucune donnée trouvée pour {model}.{field}."})
 
-        result = engine.forecast_ets(series, periods=periods)
+        result  = engine.forecast_ets(series, periods=periods)
+        metrics = engine.calculate_metrics(series, result["fitted"])
 
         forecast_dict = {
             str(d.date()): round(float(v), 2)
             for d, v in zip(result["forecast_dates"], result["forecast"])
         }
 
-        # Calcul des métriques sur les valeurs ajustées vs réelles (in-sample)
-        metrics = engine.calculate_metrics(series, result["fitted"])
-
         return json.dumps({
-            "type":     "forecast",
-            "model":    "Lissage exponentiel Holt-Winters (ETS)",
-            "periods":  periods,
-            "forecast": forecast_dict,
-            "mae":      round(metrics.get("mae", 0), 2),
-            "mape":     round(metrics.get("mape", 0), 2),
-            "rmse":     round(metrics.get("rmse", 0), 2)
+            "type":        "forecast",
+            "odoo_model":  model,
+            "odoo_field":  field,
+            "algo":        "Holt-Winters ETS",
+            "periods":     periods,
+            "granularity": period,
+            "forecast":    forecast_dict,
+            "metrics": {
+                "mae":      round(metrics.get("mae", 0), 2),
+                "rmse":     round(metrics.get("rmse", 0), 2),
+                "mape":     metrics.get("mape"),
+                "smape":    round(metrics.get("smape", 0), 2),
+                "n_points": metrics.get("n_points", 0),
+            }
         }, ensure_ascii=False, default=str)
 
     except Exception as e:

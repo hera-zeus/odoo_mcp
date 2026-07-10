@@ -507,9 +507,38 @@
   let sessionId      = null;
   let adminSessionId = null;
   let isAdmin        = false;
-  let currentLLM  = 'anthropic/claude-sonnet-4-6';
+  let currentLLM  = localStorage.getItem('mcp_llm') || 'anthropic/claude-sonnet-4-6';
   let currentUser = null;
   let isLoading   = false;
+
+  // ===== RESTAURATION DE SESSION =====
+  async function restoreSession() {
+    const savedSession = localStorage.getItem('mcp_session_id');
+    const savedUser    = localStorage.getItem('mcp_user');
+    if (!savedSession || !savedUser) return;
+
+    try {
+      const res = await fetch('/api/session/check', {
+        headers: { 'X-Session-ID': savedSession }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        sessionId   = savedSession;
+        currentUser = data.user;
+        document.getElementById('loginPage').style.display    = 'none';
+        document.getElementById('appContainer').style.display = 'flex';
+        document.getElementById('userName').textContent       = data.user.name;
+        document.getElementById('userAvatar').textContent     = data.user.name.charAt(0).toUpperCase();
+        document.getElementById('statusText').textContent     = `Connecté · ${data.user.name}`;
+      } else {
+        localStorage.removeItem('mcp_session_id');
+        localStorage.removeItem('mcp_user');
+      }
+    } catch(e) {
+      // Serveur indisponible — on reste sur la page de login
+    }
+  }
+  restoreSession();
 
   // ===== ADMIN TOGGLE FORM =====
   function toggleAdminForm(e) {
@@ -641,6 +670,8 @@
       if (res.ok && data.session_id) {
         sessionId   = data.session_id;
         currentUser = data.user;
+        localStorage.setItem('mcp_session_id', sessionId);
+        localStorage.setItem('mcp_user', JSON.stringify(data.user));
         document.getElementById('loginPage').style.display      = 'none';
         document.getElementById('appContainer').style.display   = 'flex';
         document.getElementById('userName').textContent         = data.user.name;
@@ -663,6 +694,8 @@
   function doLogout() {
     sessionId   = null;
     currentUser = null;
+    localStorage.removeItem('mcp_session_id');
+    localStorage.removeItem('mcp_user');
     document.getElementById('appContainer').style.display = 'none';
     document.getElementById('loginPage').style.display    = 'flex';
     document.getElementById('loginInput').value    = '';
@@ -718,6 +751,17 @@
 
       if (res.ok) {
         addMessage('assistant', data.response, data.model_used ? data.model_used.split('/').pop() : '');
+      } else if (res.status === 401) {
+        localStorage.removeItem('mcp_session_id');
+        localStorage.removeItem('mcp_user');
+        sessionId   = null;
+        currentUser = null;
+        typingEl.remove();
+        document.getElementById('appContainer').style.display = 'none';
+        document.getElementById('loginPage').style.display    = 'flex';
+        document.getElementById('loginError').textContent     = 'Session expirée. Veuillez vous reconnecter.';
+        document.getElementById('loginError').style.display   = 'block';
+        return;
       } else {
         addMessage('assistant', `❌ Erreur : ${data.detail || 'Erreur inconnue'}`, 'Système');
       }

@@ -18,14 +18,14 @@ from pydantic import BaseModel
 import httpx
 
 from app.config import settings
-from app.mcp_server.server import create_mcp_server
+from app.mcp_server.server import create_mcp_server, init_admin_session
 from app.auth.manager import OdooUserAuth
-#from app.mcp_server.tools import ForecastRequest, SalesDataRequest
 from app.llm_gateway.gateway import LiteLLMGateway
 from app.mcp_server.tools import execute_tool, TOOLS_DEFINITION
 from app.auth.admin import verify_admin_credentials, create_admin_session, get_admin_session, revoke_admin_session, admin_sessions
 from app.forecasting.engine import ForecastEngine
 from app.odoo_client.client import OdooClient
+import app.mcp_server.resources  # noqa: F401 — enregistre les ressources MCP via les décorateurs
 
 # Configuration du logging
 logging.basicConfig(
@@ -178,16 +178,12 @@ MCP_TOOLS = [
 @app.on_event("startup")
 async def startup_event():
     """Initialisation au démarrage"""
-    logger.info("🚀 Démarrage de l'application ST Digital MCP")
-    logger.info(f"📊 Odoo URL: {settings.ODOO_URL}")
-    logger.info(f"🤖 LLM par défaut: {settings.DEFAULT_LLM}")
-    
-    # Tester la connexion Odoo
-    try:
-        await odoo_client.test_connection()
-        logger.info("✅ Connexion Odoo établie avec succès")
-    except Exception as e:
-        logger.error(f"❌ Erreur de connexion Odoo: {e}")
+    logger.info("Démarrage de l'application ST Digital MCP")
+    logger.info(f"Odoo URL: {settings.ODOO_URL}")
+    logger.info(f"LLM par défaut: {settings.DEFAULT_LLM}")
+
+    # Initialiser la session admin pour le serveur MCP
+    await init_admin_session()
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -251,6 +247,31 @@ async def root():
     </html>
     """
 
+def safe_history_slice(history: list, max_messages: int = 10) -> list:
+    """
+    Retourne jusqu'à max_messages messages sans jamais couper une séquence
+    tool_call/tool_result. Commence toujours par un message 'user'.
+    """
+    if not history:
+        return []
+    if len(history) <= max_messages:
+        return history
+
+    candidate = history[-max_messages:]
+
+    # Reculer jusqu'au premier message 'user' pour ne pas commencer
+    # par un 'tool' ou 'assistant' orphelin de son tool_use
+    for i, msg in enumerate(candidate):
+        if msg.get("role") == "user":
+            return candidate[i:]
+
+    # Fallback : dernier message user uniquement
+    for msg in reversed(history):
+        if msg.get("role") == "user":
+            return [msg]
+    return []
+
+
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest, req: Request):
     """
@@ -293,7 +314,7 @@ async def chat_endpoint(request: ChatRequest, req: Request):
         # 3. Construction du contexte pour le LLM
         messages = [
             {"role": "system", "content": system_prompt},
-            *session_history[-5:]  # 10 derniers messages
+            *safe_history_slice(session_history)
         ]
         
         # 4. Appel initial au LLM avec les Tools disponibles
@@ -353,11 +374,12 @@ async def chat_endpoint(request: ChatRequest, req: Request):
             # 6. On renvoie l'historique enrichi au LLM pour qu'il génère la réponse finale
             messages = [
                 {"role": "system", "content": system_prompt},
-                *session_history[-5:]
+                *safe_history_slice(session_history)
             ]
-            
-            response = await llm_gateway.chat_completion(
+
+            response = await llm_gateway.chat_completion_with_tools(
                 messages=messages,
+                tools=TOOLS_DEFINITION,
                 model=request.llm_model
             )
 
@@ -591,6 +613,16 @@ async def login_endpoint(credentials: LoginRequest):
     }
 
 
+@app.get("/api/session/check")
+async def check_session(request: Request):
+    """Vérifie si une session utilisateur est encore valide"""
+    session_id = request.headers.get("X-Session-ID")
+    if session_id and session_id in sessions:
+        user = sessions[session_id]["user"]
+        return {"valid": True, "user": {"uid": user["uid"], "name": user["name"], "email": user["email"]}}
+    raise HTTPException(status_code=401, detail="Session invalide ou expirée")
+
+
 @app.get("/api/llms")
 async def list_llms():
     """Liste des LLMs disponibles via LiteLLM"""
@@ -627,6 +659,9 @@ async def build_mcp_context() -> Dict[str, Any]:
 
 # Monter les fichiers statiques
 app.mount("/static", StaticFiles(directory="app/web_interface/static"), name="static")
+
+# Monter le serveur MCP (transport SSE — compatible Claude Desktop et clients MCP)
+app.mount("/mcp", mcp_server.http_app(transport="sse"), name="mcp")
 
 if __name__ == "__main__":
     import uvicorn

@@ -8,8 +8,9 @@ class Settings:
     # Odoo
     ODOO_URL: str = os.getenv("ODOO_URL", "https://st19.sky-erp.app")
     ODOO_DB: str = os.getenv("ODOO_DB", "st19")
-    #ODOO_USERNAME: str = os.getenv("ODOO_USERNAME", "api_user")
-    #ODOO_PASSWORD: str = os.getenv("ODOO_PASSWORD", "")
+    # Credentials admin pour le serveur MCP (accès lecture globale, indépendant des sessions utilisateur)
+    ODOO_ADMIN_LOGIN: str = os.getenv("ODOO_ADMIN_LOGIN", "")
+    ODOO_ADMIN_KEY: str   = os.getenv("ODOO_ADMIN_KEY", "")
     
     # LLM
     DEFAULT_LLM: str = os.getenv("DEFAULT_LLM", "anthropic/claude-sonnet-4-6")
