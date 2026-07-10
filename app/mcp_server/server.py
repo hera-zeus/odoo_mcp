@@ -40,7 +40,7 @@ async def _fetch_company_info() -> None:
     try:
         records = await _odoo.search_read(
             model="res.company",
-            domain=[],
+            domain=[["active", "=", True]],
             fields=["name", "currency_id"],
             odoo_session_id=_admin_session,
             limit=1
