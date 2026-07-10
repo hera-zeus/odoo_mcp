@@ -6,8 +6,63 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Seuil de CV au-delà duquel on bascule sur la WMA
+# CV > 1.2 = données très irrégulières, ETS peu fiable
+CV_THRESHOLD = 1.2
+
+
 class ForecastEngine:
-    """Moteur Prédictif Universel basé sur le lissage exponentiel (ETS)"""
+    """Moteur Prédictif Universel — ETS pour données régulières, WMA pour demande sporadique."""
+
+    def _weighted_moving_average(
+        self, series: pd.Series, periods: int, real_freq: str
+    ) -> Dict:
+        """
+        Moyenne mobile pondérée (poids croissants vers le présent).
+        Utilisée quand CV > CV_THRESHOLD (demande sporadique / projet par projet).
+        Retourne aussi un intervalle de confiance basé sur l'écart-type historique.
+        """
+        n = len(series)
+        # Poids linéaires : le mois le plus récent pèse n fois plus que le premier
+        weights    = np.arange(1, n + 1, dtype=float)
+        weights   /= weights.sum()
+        wma_value  = float(np.dot(weights, series.values))
+        std        = float(series.std())
+
+        last_date      = series.index[-1]
+        forecast_dates = pd.date_range(start=last_date, periods=periods + 1, freq=real_freq)[1:]
+
+        # Fitted = WMA sur une fenêtre glissante de 3 mois (in-sample approximation)
+        window = min(3, n)
+        fitted = series.rolling(window=window, min_periods=1).mean().shift(1)
+        fitted = fitted.fillna(series.mean())
+
+        forecast_series = pd.Series(
+            [wma_value] * periods,
+            index=forecast_dates
+        )
+
+        logger.info(
+            f"WMA: valeur={wma_value:.0f}, std={std:.0f}, "
+            f"intervalle=[{max(0, wma_value - std):.0f}, {wma_value + std:.0f}]"
+        )
+
+        return {
+            'forecast':       forecast_series,
+            'fitted':         fitted,
+            'series_clean':   series,
+            'forecast_dates': forecast_dates,
+            'model_info': {
+                'algo':         'WMA',
+                'n_points':     n,
+                'wma_value':    round(wma_value),
+                'std':          round(std),
+                'lower_bound':  round(max(0, wma_value - std)),
+                'upper_bound':  round(wma_value + std),
+                'cv':           round(series.std() / series.mean() if series.mean() else 0, 3),
+                'reason':       'Demande sporadique détectée (CV élevé) — ETS non adapté'
+            }
+        }
 
     def forecast_ets(self, series: pd.Series, periods: int = 6) -> Dict:
         """
@@ -26,12 +81,17 @@ class ForecastEngine:
             real_freq  = pd.infer_freq(series_clean.index) or 'MS'
 
             # Diagnostics
-            cv = series_clean.std() / series_clean.mean() if series_clean.mean() != 0 else 0
+            cv           = series_clean.std() / series_clean.mean() if series_clean.mean() != 0 else 0
             n_zeros_orig = int((series == 0).sum())
             logger.info(
                 f"Série: n={n}, min={series_clean.min():.0f}, max={series_clean.max():.0f}, "
                 f"mean={series_clean.mean():.0f}, CV={cv:.2f}, zéros_originaux={n_zeros_orig}"
             )
+
+            # Détection demande sporadique : CV > seuil → WMA plus adaptée qu'ETS
+            if cv > CV_THRESHOLD:
+                logger.info(f"CV={cv:.2f} > {CV_THRESHOLD} — basculement sur WMA (demande sporadique)")
+                return self._weighted_moving_average(series_clean, periods, real_freq)
 
             # Transformation log pour données financières à forte variance (CV > 0.5)
             # Normalise la variance et améliore drastiquement la convergence ETS
@@ -94,6 +154,7 @@ class ForecastEngine:
                 'series_clean':   series_clean,
                 'forecast_dates': forecast_dates,
                 'model_info': {
+                    'algo':             'ETS',
                     'n_points':         n,
                     'trend':            'add',
                     'seasonal':         use_seasonal,
