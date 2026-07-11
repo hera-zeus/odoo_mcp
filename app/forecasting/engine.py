@@ -249,9 +249,10 @@ class ForecastEngine:
             else:
                 mape = None  # Toutes les valeurs réelles sont à zéro
 
+            mape_str = f"{mape:.1f}%" if mape is not None else "N/A"
             logger.info(
                 f"📊 Métriques: MAE={mae:.2f}, RMSE={rmse:.2f}, "
-                f"MAPE={mape:.1f}% (sur {len(actual_nz)} pts non-nuls), "
+                f"MAPE={mape_str} (sur {len(actual_nz)} pts non-nuls), "
                 f"sMAPE={smape:.1f}% (sur {len(actual_clean)} pts)"
             )
 
