@@ -396,6 +396,7 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     - La devise officielle de {company} est le {currency}. Utilise TOUJOURS {currency} pour tous les montants. N'utilise pas autre devise sauf demande explicite.
     - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE ou sMAPE).
     - Pour toute requête sans date précisée, utilise l'année en cours ({today.year}) comme référence.
+    - Pour les prévisions : ne fournis JAMAIS start_date ni end_date à get_forecast — l'outil les détecte automatiquement depuis Odoo. Fournis uniquement model, field, date_field, domain si nécessaire, periods et period.
     """
 
     try:

@@ -138,13 +138,14 @@ class ForecastEngine:
                 model = ExponentialSmoothing(series_fit, trend='add', seasonal=None)
                 fit   = model.fit(optimized=True)
 
-            # Retransformation si log appliqué
+            # Retransformation si log appliqué + forcer le même index que series_clean
+            # (statsmodels peut retourner un RangeIndex au lieu du DatetimeIndex)
             if use_log:
+                fitted = pd.Series(np.exp(fit.fittedvalues.values), index=series_clean.index)
                 forecast = np.exp(fit.forecast(periods))
-                fitted   = np.exp(fit.fittedvalues)
             else:
+                fitted = pd.Series(fit.fittedvalues.values, index=series_clean.index)
                 forecast = fit.forecast(periods)
-                fitted   = fit.fittedvalues
 
             forecast_dates = pd.date_range(start=last_date, periods=periods + 1, freq=real_freq)[1:]
 
@@ -182,10 +183,15 @@ class ForecastEngine:
         try:
             from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-            # Aligner les indices
-            common_idx        = actual.index.intersection(predicted.index)
-            actual_aligned    = actual.loc[common_idx]
-            predicted_aligned = predicted.loc[common_idx]
+            # Aligner les indices — fallback positionnel si les index ne se recoupent pas
+            common_idx = actual.index.intersection(predicted.index)
+            if len(common_idx) > 0:
+                actual_aligned    = actual.loc[common_idx]
+                predicted_aligned = predicted.loc[common_idx]
+            else:
+                min_len           = min(len(actual), len(predicted))
+                actual_aligned    = actual.iloc[:min_len]
+                predicted_aligned = predicted.iloc[:min_len]
 
             # Exclure les NaN (valeurs d'initialisation ETS) et les infinis
             valid_mask        = ~actual_aligned.isna() & ~predicted_aligned.isna() \

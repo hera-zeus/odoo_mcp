@@ -17,7 +17,7 @@ mcp = FastMCP(
 
 _odoo          = OdooClient()
 _admin_session: str | None = None
-company_info:   dict        = {}   # nom + devise lus depuis res.company au démarrage
+n:   dict        = {}   # nom + devise lus depuis res.company au démarrage
 
 
 async def init_admin_session() -> None:
@@ -117,11 +117,11 @@ async def get_forecast(
     model: str,
     field: str,
     date_field: str,
-    start_date: str,
-    end_date: str,
     domain: list[list] = [],
     periods: int = 6,
-    period: str = "M"
+    period: str = "M",
+    start_date: str = "",
+    end_date: str = ""
 ) -> str:
     """
     Génère des prévisions via lissage exponentiel Holt-Winters (ETS) sur n'importe
@@ -140,11 +140,30 @@ async def get_forecast(
         period:     Granularité 'D', 'W', 'M', 'Q' (défaut: 'M')
     """
     from app.forecasting.engine import ForecastEngine
+    from datetime import datetime as _dt
     engine = ForecastEngine()
+
+    today      = _dt.now()
+    _end_date  = end_date   or today.strftime("%Y-%m-%d")
+    _start_date = start_date
+    if not _start_date:
+        first_rec = await _odoo.search_read(
+            model=model,
+            domain=[[date_field, "!=", False]] + list(domain),
+            fields=[date_field],
+            odoo_session_id=_admin_session,
+            limit=1,
+            order=f"{date_field} asc"
+        )
+        if first_rec and first_rec[0].get(date_field):
+            _start_date = str(first_rec[0][date_field])[:10]
+        else:
+            _start_date = "2020-01-01"
+        logger.info(f"get_forecast: start_date auto-détecté = {_start_date}")
 
     series = await _odoo.get_time_series(
         table=model, field=field, date_field=date_field,
-        domain=domain, start_date=start_date, end_date=end_date,
+        domain=domain, start_date=_start_date, end_date=_end_date,
         period=period, odoo_session_id=_admin_session
     )
 

@@ -21,10 +21,19 @@ class OdooClient:
         fields: List[str],
         odoo_session_id: str,
         limit: int = 100,
-        offset: int = 0
+        offset: int = 0,
+        order: str = None
     ) -> List[Dict]:
         """Exécute une requête en utilisant la session de l'utilisateur final"""
         try:
+            kwargs = {
+                "fields": fields,
+                "limit":  limit,
+                "offset": offset
+            }
+            if order:
+                kwargs["order"] = order
+
             payload = {
                 "jsonrpc": "2.0",
                 "method":  "call",
@@ -33,11 +42,7 @@ class OdooClient:
                     "model":  model,
                     "method": "search_read",
                     "args":   [domain],
-                    "kwargs": {
-                        "fields": fields,
-                        "limit":  limit,
-                        "offset": offset
-                    }
+                    "kwargs": kwargs
                 }
             }
 

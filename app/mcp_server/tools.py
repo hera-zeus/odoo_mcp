@@ -89,7 +89,7 @@ TOOLS_DEFINITION = [
                         "default": "M"
                     }
                 },
-                "required": ["model", "field", "date_field", "start_date", "end_date"]
+                "required": ["model", "field", "date_field"]
             }
         }
     },
@@ -173,15 +173,34 @@ async def _get_forecast(args: Dict, odoo_session_id: str) -> str:
     """Génère des prévisions sur n'importe quel champ numérique d'un modèle Odoo"""
     try:
         from app.forecasting.engine import ForecastEngine
+        from datetime import datetime
         engine     = ForecastEngine()
         model      = args.get("model", "sale.order")
         field      = args.get("field", "amount_total")
         date_field = args.get("date_field", "date_order")
         domain     = args.get("domain", [])
-        start_date = args.get("start_date", "2024-01-01")
-        end_date   = args.get("end_date", "2026-12-31")
         periods    = args.get("periods", 6)
         period     = args.get("period", "M")
+
+        today    = datetime.now()
+        end_date = args.get("end_date") or today.strftime("%Y-%m-%d")
+
+        start_date = args.get("start_date")
+        if not start_date:
+            # Trouver la vraie première date du modèle dans Odoo
+            first_rec = await odoo_client.search_read(
+                model=model,
+                domain=[[date_field, "!=", False]] + list(domain),
+                fields=[date_field],
+                odoo_session_id=odoo_session_id,
+                limit=1,
+                order=f"{date_field} asc"
+            )
+            if first_rec and first_rec[0].get(date_field):
+                start_date = str(first_rec[0][date_field])[:10]
+            else:
+                start_date = "2020-01-01"
+            logger.info(f"start_date auto-détecté : {start_date}")
 
         series = await odoo_client.get_time_series(
             table=model,
