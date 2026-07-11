@@ -80,12 +80,16 @@ class ForecastEngine:
             last_date  = series_clean.index[-1]
             real_freq  = pd.infer_freq(series_clean.index) or 'MS'
 
-            # Diagnostics
-            cv           = series_clean.std() / series_clean.mean() if series_clean.mean() != 0 else 0
+            # CV calculé sur les valeurs NON NULLES de la série ORIGINALE
+            # (pas sur series_clean interpolée qui lisse artificiellement la variance)
+            nonzero_orig = series[series > 0].astype(float)
+            cv           = (nonzero_orig.std() / nonzero_orig.mean()
+                            if len(nonzero_orig) > 1 and nonzero_orig.mean() != 0 else 0)
             n_zeros_orig = int((series == 0).sum())
+
             logger.info(
-                f"Série: n={n}, min={series_clean.min():.0f}, max={series_clean.max():.0f}, "
-                f"mean={series_clean.mean():.0f}, CV={cv:.2f}, zéros_originaux={n_zeros_orig}"
+                f"Série: n={n}, min={nonzero_orig.min():.0f}, max={nonzero_orig.max():.0f}, "
+                f"mean={nonzero_orig.mean():.0f}, CV_réel={cv:.2f}, zéros={n_zeros_orig}/{n}"
             )
 
             # Détection demande sporadique : CV > seuil → WMA plus adaptée qu'ETS
@@ -209,6 +213,10 @@ class ForecastEngine:
 
             if len(actual_nz) > 0:
                 mape = float(np.mean(np.abs((actual_nz - predicted_nz) / actual_nz)) * 100)
+                # MAPE > 200% : données trop hétérogènes, valeur trompeuse
+                if mape > 200:
+                    logger.warning(f"MAPE={mape:.1f}% > 200% — masqué (utiliser sMAPE)")
+                    mape = None
             else:
                 mape = None  # Toutes les valeurs réelles sont à zéro
 
