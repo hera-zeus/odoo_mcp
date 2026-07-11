@@ -3,6 +3,7 @@ import numpy as np
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from typing import Dict
 import logging
+import warnings
 
 logger = logging.getLogger(__name__)
 
@@ -195,6 +196,86 @@ class ForecastEngine:
         except Exception as e:
             logger.error(f"Erreur de prévision ETS: {e}")
             raise
+
+    def forecast_prophet(self, series: pd.Series, periods: int = 6) -> Dict:
+        """
+        Prévision via Facebook Prophet.
+        Gère nativement les données sporadiques, les pics, les saisonnalités et les tendances.
+        Fournit des intervalles de confiance par période.
+        """
+        try:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                from prophet import Prophet
+            logging.getLogger('prophet').setLevel(logging.ERROR)
+            logging.getLogger('cmdstanpy').setLevel(logging.ERROR)
+        except ImportError:
+            raise ImportError("Prophet n'est pas installé. Exécutez : pip install prophet")
+
+        n         = len(series)
+        real_freq = pd.infer_freq(series.index) or 'MS'
+
+        # Calcul du CV pour choisir le mode de saisonnalité
+        nonzero = series[series > 0].astype(float)
+        cv = float(nonzero.std() / nonzero.mean()) if len(nonzero) > 1 and nonzero.mean() != 0 else 0
+
+        # Multiplicatif si forte variance ET toutes les valeurs > 0
+        # Additif sinon (gère les zéros)
+        seasonality_mode = 'multiplicative' if cv > 0.5 and series.min() > 0 else 'additive'
+
+        # Prophet attend un DataFrame avec colonnes 'ds' et 'y'
+        df = pd.DataFrame({'ds': series.index, 'y': series.values.astype(float)})
+
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            model = Prophet(
+                yearly_seasonality=(n >= 24),
+                weekly_seasonality=False,
+                daily_seasonality=False,
+                seasonality_mode=seasonality_mode,
+                interval_width=0.80,
+                uncertainty_samples=300,
+            )
+            model.fit(df)
+            future   = model.make_future_dataframe(periods=periods, freq=real_freq)
+            forecast = model.predict(future)
+
+        # Prévisions futures (dernières `periods` lignes)
+        future_rows    = forecast.tail(periods)
+        forecast_dates = pd.DatetimeIndex(future_rows['ds'])
+        forecast_vals  = future_rows['yhat'].clip(lower=0).values
+        lower_vals     = future_rows['yhat_lower'].clip(lower=0).values
+        upper_vals     = future_rows['yhat_upper'].clip(lower=0).values
+
+        forecast_series = pd.Series(forecast_vals, index=forecast_dates)
+        lower_series    = pd.Series(lower_vals,    index=forecast_dates)
+        upper_series    = pd.Series(upper_vals,    index=forecast_dates)
+
+        # Valeurs ajustées in-sample
+        in_sample = forecast[forecast['ds'].isin(series.index)].copy()
+        in_sample = in_sample.set_index('ds')['yhat'].clip(lower=0)
+        fitted    = pd.Series(in_sample.reindex(series.index).values, index=series.index)
+
+        logger.info(
+            f"Prophet: n={n}, freq={real_freq}, seasonality={seasonality_mode}, "
+            f"yearly={n >= 24}, CV={cv:.2f}"
+        )
+
+        return {
+            'forecast':        forecast_series,
+            'forecast_lower':  lower_series,
+            'forecast_upper':  upper_series,
+            'fitted':          fitted,
+            'series_clean':    series.copy().astype(float),
+            'forecast_dates':  forecast_dates,
+            'model_info': {
+                'algo':              'Prophet',
+                'n_points':          n,
+                'seasonality_mode':  seasonality_mode,
+                'yearly_seasonality': n >= 24,
+                'cv':                round(cv, 3),
+            }
+        }
 
     def calculate_metrics(self, actual: pd.Series, predicted: pd.Series) -> Dict:
         """
