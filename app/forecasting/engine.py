@@ -7,8 +7,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Seuil de CV au-delà duquel on bascule sur la WMA
-# CV > 1.2 = données très irrégulières, ETS peu fiable
-CV_THRESHOLD = 1.2
+# CV > 0.9 = données irrégulières, ETS peu fiable
+CV_THRESHOLD = 0.9
+
+# Taux de zéros au-delà duquel on bascule sur la WMA
+# > 30% de périodes nulles = demande sporadique même si CV < seuil
+ZERO_RATE_THRESHOLD = 0.30
 
 
 class ForecastEngine:
@@ -60,7 +64,7 @@ class ForecastEngine:
                 'lower_bound':  round(max(0, wma_value - std)),
                 'upper_bound':  round(wma_value + std),
                 'cv':           round(series.std() / series.mean() if series.mean() else 0, 3),
-                'reason':       'Demande sporadique détectée (CV élevé) — ETS non adapté'
+                'reason':       'Demande sporadique détectée (CV élevé ou trop de zéros) — ETS non adapté'
             }
         }
 
@@ -92,9 +96,17 @@ class ForecastEngine:
                 f"mean={nonzero_orig.mean():.0f}, CV_réel={cv:.2f}, zéros={n_zeros_orig}/{n}"
             )
 
-            # Détection demande sporadique : CV > seuil → WMA plus adaptée qu'ETS
-            if cv > CV_THRESHOLD:
-                logger.info(f"CV={cv:.2f} > {CV_THRESHOLD} — basculement sur WMA (demande sporadique)")
+            # Détection demande sporadique : CV > seuil OU taux de zéros élevé → WMA
+            zero_rate = n_zeros_orig / n if n > 0 else 0
+            sporadic_by_cv    = cv > CV_THRESHOLD
+            sporadic_by_zeros = zero_rate > ZERO_RATE_THRESHOLD
+
+            if sporadic_by_cv or sporadic_by_zeros:
+                reason = (
+                    f"CV={cv:.2f} > {CV_THRESHOLD}" if sporadic_by_cv
+                    else f"taux de zéros={zero_rate:.0%} > {ZERO_RATE_THRESHOLD:.0%}"
+                )
+                logger.info(f"{reason} — basculement sur WMA (demande sporadique)")
                 return self._weighted_moving_average(series_clean, periods, real_freq)
 
             # Transformation log pour données financières à forte variance (CV > 0.5)
