@@ -17,7 +17,7 @@ mcp = FastMCP(
 
 _odoo          = OdooClient()
 _admin_session: str | None = None
-n:   dict        = {}   # nom + devise lus depuis res.company au démarrage
+company_info: dict = {}   # nom + devise lus depuis res.company au démarrage
 
 
 async def init_admin_session() -> None:
