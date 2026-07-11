@@ -394,7 +394,7 @@ async def chat_endpoint(request: ChatRequest, req: Request):
     - Si tu n'as pas les données ou si l'outil retourne une erreur, dis-le clairement.
     - Respecte la confidentialité : ne donne pas d'informations sur les données d'autres utilisateurs.
     - La devise officielle de {company} est le {currency}. Utilise TOUJOURS {currency} pour tous les montants. N'utilise pas autre devise sauf demande explicite.
-    - Pour les prévisions, mentionne toujours la marge d'erreur (MAPE ou sMAPE).
+    - Pour les prévisions, affiche TOUJOURS le tableau des métriques (MAE, RMSE, sMAPE, et MAPE si disponible) quel que soit l'algorithme utilisé (ETS ou WMA). Ces valeurs se trouvent dans le champ "metrics" du résultat.
     - Pour toute requête sans date précisée, utilise l'année en cours ({today.year}) comme référence.
     - Pour les prévisions : ne fournis JAMAIS start_date ni end_date à get_forecast — l'outil les détecte automatiquement depuis Odoo. Fournis uniquement model, field, date_field, domain si nécessaire, periods et period.
     """
