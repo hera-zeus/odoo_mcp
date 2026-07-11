@@ -159,6 +159,17 @@ class ForecastEngine:
                 fitted = pd.Series(fit.fittedvalues.values, index=series_clean.index)
                 forecast = fit.forecast(periods)
 
+            # Validation post-fit : si le sMAPE in-sample dépasse 50 %, ETS ne convient pas
+            valid_mask = (~fitted.isna()) & (~series_clean.isna()) & np.isfinite(fitted) & np.isfinite(series_clean)
+            if valid_mask.sum() > 0:
+                a = series_clean[valid_mask].values
+                p = fitted[valid_mask].values
+                smape_insample = float(np.mean(2 * np.abs(a - p) / (np.abs(a) + np.abs(p) + 1e-9)) * 100)
+                logger.info(f"ETS sMAPE in-sample = {smape_insample:.1f}%")
+                if smape_insample > 50:
+                    logger.info(f"sMAPE={smape_insample:.1f}% > 50% — ETS non fiable, basculement sur WMA")
+                    return self._weighted_moving_average(series_clean, periods, real_freq)
+
             forecast_dates = pd.date_range(start=last_date, periods=periods + 1, freq=real_freq)[1:]
 
             logger.info(
