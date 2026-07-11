@@ -205,7 +205,6 @@ async def get_forecast(
         "forecast":    forecast_dict,
         "metrics": {
             "mae":      round(metrics.get("mae", 0), 2),
-            "rmse":     round(metrics.get("rmse", 0), 2),
             "smape":    round(metrics.get("smape", 0), 2),
             "mape":     metrics.get("mape"),
             "n_points": metrics.get("n_points", 0),

@@ -251,7 +251,6 @@ async def _get_forecast(args: Dict, odoo_session_id: str) -> str:
             "forecast":    forecast_dict,
             "metrics": {
                 "mae":      round(metrics.get("mae", 0), 2),
-                "rmse":     round(metrics.get("rmse", 0), 2),
                 "smape":    round(metrics.get("smape", 0), 2),
                 "mape":     metrics.get("mape"),
                 "n_points": metrics.get("n_points", 0),
